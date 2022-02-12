@@ -1,0 +1,16 @@
+<div class="container">
+    
+    
+  <div class="row">
+    <div class="column column-50"><h1>Hard Words</h1></div>
+  <%= if @current_user do %>
+    <div class="column "><%= @current_user.nickname %></div>
+    <div class="column"><%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %></div>
+    <div class="column "><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %></div>
+  <% else %>
+    <div class="column column-offset-25"><%= link "Register", to: Routes.user_registration_path(@conn, :new) %></div>
+    <div class="column "><%= link "Log in", to: Routes.user_session_path(@conn, :new) %></div>
+  <% end %>
+  </div>
+
+</div>
