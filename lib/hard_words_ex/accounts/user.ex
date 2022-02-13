@@ -9,6 +9,8 @@ defmodule HardWordsEx.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
 
+    has_many :scores, HardWordsEx.Gameplay.ScoreLog
+
     timestamps()
   end
 
