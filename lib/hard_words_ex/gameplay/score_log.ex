@@ -27,6 +27,6 @@ defmodule HardWordsEx.Gameplay.ScoreLog do
   end
 
   def recentScores() do
-    Repo.all(from u in HardWordsEx.Gameplay.ScoreLog, order_by: [desc: :inserted_at], limit: 10)
+    Repo.all(from u in HardWordsEx.Gameplay.ScoreLog, order_by: [desc: :inserted_at], limit: 20)
   end
 end
