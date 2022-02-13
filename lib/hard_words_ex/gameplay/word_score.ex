@@ -8,7 +8,7 @@ defmodule HardWordsEx.Gameplay.WordScore do
       guessChars
       |> Enum.zip(targetChars)
       |> Enum.with_index()
-      |> Enum.reduce(0, fn {{guessChar, targetChar}, index}, acc ->
+      |> Enum.reduce(0, fn {{guessChar, targetChar}, _index}, acc ->
         cond do
           guessChar == targetChar -> acc + 3
           Enum.member?(targetChars, guessChar) -> acc + 2

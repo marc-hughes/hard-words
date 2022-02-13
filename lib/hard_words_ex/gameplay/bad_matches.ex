@@ -18,20 +18,4 @@ defmodule HardWordsEx.Gameplay.BadMatches do
       end
     end)
   end
-
-  # export const getBadMatches = (words: string[], guess: string) => {
-  #     let lowScore = 1000000;
-  #     let results = [];
-
-  #     for (let word of words) {
-  #         const currentScore = wordScore(word, guess);
-  #         if (currentScore === lowScore) { results.push(word) }
-  #         if (currentScore < lowScore) {
-  #             lowScore = currentScore;
-  #             results = [word]
-  #         }
-  #     }
-
-  #     return { results, score: lowScore };
-  # }
 end

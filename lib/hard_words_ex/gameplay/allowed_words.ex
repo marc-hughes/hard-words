@@ -1,5 +1,6 @@
 defmodule HardWordsEx.Gameplay.AllowedWords do
   def words do
+    HardWordsEx.Gameplay.AllowedAnswers.words() ++
     [
       "aahed",
       "aalii",

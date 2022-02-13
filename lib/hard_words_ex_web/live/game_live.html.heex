@@ -1,3 +1,32 @@
-Here's my live view.
-<%= @test %>
+<div phx-window-keydown="key_down">
+
+<%= if @game.gameOver and @game.winner do %> 
+<h1>WOW! That was really great!</h1>
+<button phx-click="play_again">Play Again</button>
+<% end %>
+
+<%= if @game.gameOver and not @game.winner do %> 
+<h1>Too Bad, So Sad, the answer was <%= @game.answer %></h1>
+<button phx-click="play_again">Play Again</button>
+<% end %>
+
+<%= for {guess, feedback} <- Enum.reverse(Enum.zip(@game.previousGuesses,  @game.previousFeedback)) do %>
+    <.live_component module={HardWordsEx.WordComponent} id={guess} feedback={feedback} />
+<% end %>
+
+<%= if not @game.gameOver do %> 
+<.live_component module={HardWordsEx.WordInputComponent} id="hero" word={@word} /> 
+<% end %>
+
+<%= for empty <- placeholders(@game.previousGuesses) do %>
+    <.live_component module={HardWordsEx.WordInputComponent} id={empty} word="" />
+<% end %>
+
+<%= for {letter, status} <- alphabet(@game.previousFeedback) do %>
+    <div class={"picker " <> Atom.to_string(status)}>
+        <%= letter %>    
+    </div>
+<% end %>
+
+</div>
 

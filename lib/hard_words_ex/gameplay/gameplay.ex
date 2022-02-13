@@ -32,7 +32,10 @@ defmodule HardWordsEx.Gameplay.Gameplay do
 
     %GameState{
       previousGuesses: [guess | previousGuesses],
-      previousFeedback: [newFeedback | previousFeedback]
+      previousFeedback: [newFeedback | previousFeedback],
+      gameOver: length(previousGuesses) === 5 or targetWord == guess,
+      answer: targetWord,
+      winner: targetWord == guess
     }
   end
 end
