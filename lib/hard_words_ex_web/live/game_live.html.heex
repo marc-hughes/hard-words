@@ -1,4 +1,4 @@
-<div phx-window-keydown="key_down">
+<div class="gameboard" phx-window-keydown="key_down">
 
 <%= if @game.gameOver and @game.winner do %> 
 <h1>WOW! That was really great!</h1>
@@ -23,10 +23,20 @@
 <% end %>
 
 <%= for {letter, status} <- alphabet(@game.previousFeedback) do %>
-    <div class={"picker " <> Atom.to_string(status)}>
+    <div phx-click="pick_letter" phx-value-letter={letter} class={"picker " <> Atom.to_string(status)}>
         <%= letter %>    
     </div>
 <% end %>
+
+<div phx-click="pick_letter" phx-value-letter="BACKSPACE" class="picker">
+    ⬅        
+</div>
+
+<div phx-click="pick_letter" phx-value-letter="ENTER" class="picker">            
+        🏁
+</div>
+
+<%= @game.answer %>
 
 </div>
 

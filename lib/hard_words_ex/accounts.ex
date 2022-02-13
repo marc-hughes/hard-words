@@ -10,6 +10,10 @@ defmodule HardWordsEx.Accounts do
 
   ## Database getters
 
+  def get_top_ten() do
+    Repo.all(from u in User, order_by: [desc: :score], limit: 10)
+  end
+
   @doc """
   Gets a user by email.
 

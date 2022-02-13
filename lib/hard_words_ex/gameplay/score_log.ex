@@ -1,5 +1,6 @@
 defmodule HardWordsEx.Gameplay.ScoreLog do
   use Ecto.Schema
+  import Ecto.Query, warn: false
   alias HardWordsEx.Repo
   # import Ecto.Changeset
 
@@ -18,5 +19,14 @@ defmodule HardWordsEx.Gameplay.ScoreLog do
       tries: tries,
       user: user
     })
+
+    if correct do
+      newUser = Ecto.Changeset.change(user, score: user.score + 1)
+      Repo.update(newUser)
+    end
+  end
+
+  def recentScores() do
+    Repo.all(from u in HardWordsEx.Gameplay.ScoreLog, order_by: [desc: :inserted_at], limit: 10)
   end
 end

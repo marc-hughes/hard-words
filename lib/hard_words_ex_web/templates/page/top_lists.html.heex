@@ -1,0 +1,30 @@
+
+<section class="phx-hero">
+    <h1>Top Scores:</h1>
+    <table>
+    <%= for {user, score} <- get_top_ten() do %>
+        <tr>
+        <td><%= user %></td>
+        <td><%= score %></td>
+        </tr>
+    <% end %>
+    </table>
+</section>
+
+<section class="phx-hero">
+    <h1>Recent Words</h1>
+    <table>
+    <%= for score <- get_recent_words() do %>
+        <tr>
+        <td><%= String.upcase(score.word) %></td>
+            <%= if score.correct do %>
+                <td>Correct In <%= score.tries %>!</td>        
+            <% end %>
+
+            <%= unless score.correct do %>
+                <td>Not Solved</td>
+            <% end %>
+        </tr>
+    <% end %>
+    </table>
+</section>
