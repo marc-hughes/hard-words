@@ -3,7 +3,7 @@
 Hey there! This was a quick & dirty project so I could learn some elixir/phoenix, this was my first time
 touching those technologies, so there's probably a lot of ugly cruft, cut me a break.
 
-You might be able to play it here: http://hard-words.fly.dev/
+You might be able to play it here: https://hard-words.shittywebapp.com/
 
 # DB stuff:
 
