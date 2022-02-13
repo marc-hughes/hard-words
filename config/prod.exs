@@ -12,9 +12,9 @@ import Config
 config :hard_words_ex, HardWordsExWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: [
-    "hard-words.shittywebapp.com",
-    "papayawhip-unkempt-nag.gigalixirapp.com",
-    "hard-words.fly.dev"
+    "https://hard-words.shittywebapp.com",
+    "https://papayawhip-unkempt-nag.gigalixirapp.com",
+    "https://hard-words.fly.dev"
   ]
 
 # Do not print debug messages in production
