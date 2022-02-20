@@ -1,7 +1,5 @@
 defmodule HardWordsExWeb.PageController do
   use HardWordsExWeb, :controller
-  import Ecto.Query, only: [from: 2]
-  alias HardWordsEx.Repo
 
   def render_index(conn, nil) do
     conn
@@ -9,19 +7,7 @@ defmodule HardWordsExWeb.PageController do
   end
 
   def render_index(conn, user) do
-    scores =
-      cond do
-        user ->
-          Repo.all(
-            from(s in HardWordsEx.Gameplay.ScoreLog,
-              where: s.user_id == ^user.id,
-              order_by: [desc: s.inserted_at]
-            )
-          )
-
-        true ->
-          []
-      end
+    scores = HardWordsEx.Gameplay.ScoreLog.recentWords(user.id)
 
     conn
     |> assign(:scores, scores)

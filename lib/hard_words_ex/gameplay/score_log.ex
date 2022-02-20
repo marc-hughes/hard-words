@@ -26,6 +26,15 @@ defmodule HardWordsEx.Gameplay.ScoreLog do
     end
   end
 
+  def recentWords(userId) do
+    Repo.all(
+      from(s in HardWordsEx.Gameplay.ScoreLog,
+        where: s.user_id == ^userId,
+        order_by: [desc: s.inserted_at]
+      )
+    )
+  end
+
   def recentScores() do
     Repo.all(from u in HardWordsEx.Gameplay.ScoreLog, order_by: [desc: :inserted_at], limit: 20)
   end
